@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/dialog_background">
+
+    <!-- Dialog title with styling -->
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Information"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/primaryColor"
+        android:paddingBottom="8dp" />
+
+    <!-- Room Types section -->
+    <TextView
+        android:id="@+id/roomTypesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Types"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/secondaryTextColor"
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp" />
+
+    <TextView
+        android:id="@+id/roomTypes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="• Standard\n• Deluxe\n• Suite"
+        android:textSize="16sp"
+        android:paddingStart="8dp"
+        android:paddingBottom="8dp" />
+
+    <!-- Divider for clean separation -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dividerColor"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Additional Charges section -->
+    <TextView
+        android:id="@+id/additionalChargesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Additional Charges"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/secondaryTextColor"
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp" />
+
+    <TextView
+        android:id="@+id/additionalCharges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="• Breakfast: $15\n• Parking: $10"
+        android:textSize="16sp"
+        android:paddingStart="8dp"
+        android:paddingBottom="8dp" />
+
+</LinearLayout>

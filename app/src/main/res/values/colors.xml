@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#6200EE</color> <!-- Adjust this color as desired -->
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="primaryColor">#6200EE</color> <!-- Primary branding color -->
+    <color name="secondaryTextColor">#333333</color> <!-- For section titles -->
+    <color name="dividerColor">#BDBDBD</color> <!-- Light gray for dividers -->
+    <color name="borderColor">#E0E0E0</color> <!-- Border for dialog background -->
+    <color name="yellow">#FFD700</color>
+    <color name="purple_500">#9C27B0</color>
+    <color name="primary">#6200EE</color>
+    <color name="primary_dark">#3700B3</color>
+    <color name="background_light">#F8F9FA</color>
+    <color name="text_primary">#343A40</color>
+
+</resources>
