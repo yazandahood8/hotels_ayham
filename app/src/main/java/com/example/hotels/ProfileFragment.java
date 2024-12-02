@@ -33,7 +33,7 @@ import com.google.firebase.storage.UploadTask;
 public class ProfileFragment extends Fragment {
 
     private ImageView profileImage;
-    private EditText editName, editEmail, editPhone, editAddress;
+    private EditText editName, editEmail, editAddress;
     private Button buttonSave;
     private Uri imageUri;
 
@@ -59,7 +59,6 @@ public class ProfileFragment extends Fragment {
         profileImage = view.findViewById(R.id.profileImage);
         editName = view.findViewById(R.id.editName);
         editEmail = view.findViewById(R.id.editEmail);
-        editPhone = view.findViewById(R.id.editPhone);
         editAddress = view.findViewById(R.id.editAddress);
         buttonSave = view.findViewById(R.id.buttonSave);
 
@@ -95,7 +94,6 @@ public class ProfileFragment extends Fragment {
                 if (user != null) {
                     editName.setText(user.getName());
                     editEmail.setText(user.getEmail());
-                    editPhone.setText(user.getPhone());
                     editAddress.setText(user.getAddress());
                     if (user.getImage() != null && !user.getImage().isEmpty()) {
                         Glide.with(getActivity()).load(user.getImage()).into(profileImage);
@@ -112,30 +110,29 @@ public class ProfileFragment extends Fragment {
 
     private void saveProfileChanges() {
         String name = editName.getText().toString().trim();
-        String phone = editPhone.getText().toString().trim();
         String address = editAddress.getText().toString().trim();
 
-        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(address)) {
+        if (TextUtils.isEmpty(name)  || TextUtils.isEmpty(address)) {
             Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Update the profile image if a new one was selected
         if (imageUri != null) {
-            uploadImageToFirebase(name, phone, address);
+            uploadImageToFirebase(name, address);
         } else {
             // No new image selected, just save the text fields
-            saveUserProfile(name, phone, address, user.getImage());
+            saveUserProfile(name, address, user.getImage());
         }
     }
 
-    private void uploadImageToFirebase(String name, String phone, String address) {
+    private void uploadImageToFirebase(String name, String address) {
         storageRef.putFile(imageUri).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 // Get the download URL for the image
                 storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
                     String imageUrl = uri.toString();
-                    saveUserProfile(name, phone, address, imageUrl); // Save profile with new image URL
+                    saveUserProfile(name, address, imageUrl); // Save profile with new image URL
                 });
             } else {
                 Toast.makeText(getContext(), "Failed to upload image", Toast.LENGTH_SHORT).show();
@@ -143,8 +140,8 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void saveUserProfile(String name, String phone, String address, String imageUrl) {
-        User updatedUser = new User(name, editEmail.getText().toString(), user.getPassword(), phone, address, imageUrl);
+    private void saveUserProfile(String name, String address, String imageUrl) {
+        User updatedUser = new User(name, editEmail.getText().toString(), user.getPassword(), address, imageUrl);
 
         userRef.setValue(updatedUser).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {

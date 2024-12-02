@@ -98,7 +98,7 @@ public class HomeFragment extends Fragment {
         filteredHotelList.addAll(hotelList); // Initially display all hotels
         adapter = new HotelAdapter(getContext(), filteredHotelList);
         horizontalRecyclerView.setAdapter(adapter);
-        horizontalRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        horizontalRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
 
     private void setupSearch() {

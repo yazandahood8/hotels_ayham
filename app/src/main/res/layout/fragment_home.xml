@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/brown"
     android:padding="16dp">
 
     <!-- Search View for searching hotels -->
@@ -11,23 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Search hotels" />
-
-    <!-- Horizontal RecyclerView for displaying a list of hotels -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hotels"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:paddingTop="16dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/horizontalRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="8dp" />
-
     <!-- Section for displaying a randomly selected hotel -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,4 +61,21 @@
             android:paddingTop="4dp" />
 
     </LinearLayout>
+    <!-- Horizontal RecyclerView for displaying a list of hotels -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hotels"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/horizontalRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp" />
+
+
 </LinearLayout>

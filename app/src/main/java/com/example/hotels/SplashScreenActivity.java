@@ -1,8 +1,11 @@
 package com.example.hotels;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.VideoView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,12 +25,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        // Check if user is already signed in
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         // Delay and transition to MainActivity
         new Handler().postDelayed(() -> {
@@ -41,7 +38,21 @@ public class SplashScreenActivity extends AppCompatActivity {
                 goToSignInActivity();
             }
         }, SPLASH_SCREEN_DELAY);
+
+
+        VideoView videoView = findViewById(R.id.videoView);
+
+        // Set the path to the video file
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.splash);
+        videoView.setVideoURI(videoUri);
+
+        // Start playing the video
+        videoView.start();
+
+
     }
+
+
     private void goToMainActivity() {
         Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
         startActivity(intent);

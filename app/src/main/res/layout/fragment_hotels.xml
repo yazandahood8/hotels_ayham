@@ -3,15 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/brown"
+
     android:padding="8dp">
 
     <SearchView
+        android:layout_margin="20dp"
+
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Search hotels" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="20dp"
+
         android:id="@+id/hotelsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

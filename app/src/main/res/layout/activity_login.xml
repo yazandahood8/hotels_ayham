@@ -1,74 +1,80 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center"
-    android:background="#f8f9fa">
+    android:background="@drawable/b1"
+    tools:context=".LoginActivity">
 
-    <!-- App Title or Logo -->
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login to Your Account"
-        android:textSize="24sp"
-        android:textColor="#343a40"
-        android:paddingBottom="16dp"
-        android:textStyle="bold"/>
+    <!-- Email Input -->
 
-    <!-- Email Input Field -->
+    <!-- Password Input -->
+
+    <!-- Login Button -->
     <EditText
+        android:background="@null"
+
         android:id="@+id/inputEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="289dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="408dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="12dp"
-        android:background="@drawable/rounded_edittext"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Password Input Field -->
+    <!-- Forgot Password Link -->
+
     <EditText
+        android:background="@null"
+
         android:id="@+id/inputPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="319dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="24dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="12dp"
-        android:background="@drawable/rounded_edittext"
-        android:layout_marginBottom="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputEmail" />
 
-    <!-- Login Button -->
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:backgroundTint="#007bff"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="16dp"
-        android:padding="12dp"/>
-
-    <!-- Forgot Password Link -->
     <TextView
-        android:id="@+id/forgotPasswordLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password?"
-        android:textColor="#007bff"
-        android:layout_marginBottom="16dp"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
+        android:id="@+id/buttonLogin"
+        android:layout_width="255dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.342"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputPassword" />
 
     <!-- Sign Up Link -->
     <TextView
+        android:id="@+id/forgotPasswordLink"
+        android:layout_width="111dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="32dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin" />
+
+    <TextView
         android:id="@+id/signupLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Don't have an account? Sign Up"
-        android:textColor="#6c757d"
-        android:layout_gravity="center"
-        android:textStyle="bold"/>
-</LinearLayout>
+        android:layout_width="69dp"
+        android:layout_height="17dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forgotPasswordLink" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

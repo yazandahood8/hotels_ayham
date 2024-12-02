@@ -6,6 +6,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText inputName, inputEmail, inputPhone, inputAddress, inputPassword, inputRepassword;
-    private Button buttonSignUp;
+    private EditText inputName, inputEmail, inputAddress, inputPassword;
+    private TextView buttonSignUp;
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
 
@@ -32,10 +33,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         inputName = findViewById(R.id.inputName);
         inputEmail = findViewById(R.id.inputEmail);
-        inputPhone = findViewById(R.id.inputPhone);
         inputAddress = findViewById(R.id.inputAddress);
         inputPassword = findViewById(R.id.inputPassword);
-        inputRepassword = findViewById(R.id.inputRepassword);
         buttonSignUp = findViewById(R.id.buttonSignUp);
 
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
@@ -49,10 +48,8 @@ public class SignUpActivity extends AppCompatActivity {
     private void registerUser() {
         String name = inputName.getText().toString().trim();
         String email = inputEmail.getText().toString().trim();
-        String phone = inputPhone.getText().toString().trim();
         String address = inputAddress.getText().toString().trim();
         String password = inputPassword.getText().toString().trim();
-        String repassword = inputRepassword.getText().toString().trim();
 
         if (TextUtils.isEmpty(name)) {
             inputName.setError("Name is required");
@@ -61,11 +58,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(email) || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             inputEmail.setError("Valid email is required");
-            return;
-        }
-
-        if (TextUtils.isEmpty(phone) || phone.length() < 10) {
-            inputPhone.setError("Valid phone number is required");
             return;
         }
 
@@ -79,17 +71,13 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        if (!password.equals(repassword)) {
-            inputRepassword.setError("Passwords do not match");
-            return;
-        }
 
         // Register user in Firebase Auth and save user data to Firebase Database
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         String userId = auth.getCurrentUser().getUid();
-                        User user = new User(name, email,password, phone, address,"");
+                        User user = new User(name, email,password, address,"");
 
                         databaseReference.child(email.replace(".","_")).child("info").setValue(user)
                                 .addOnCompleteListener(task1 -> {

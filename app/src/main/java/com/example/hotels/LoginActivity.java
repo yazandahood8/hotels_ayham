@@ -1,5 +1,10 @@
 package com.example.hotels;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -15,10 +20,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
-    private Button buttonLogin;
+    private TextView buttonLogin;
     private TextView forgotPasswordLink, signupLink;
     private FirebaseAuth auth;
-
+    WifiStateReceiver wifiStateReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,26 @@ public class LoginActivity extends AppCompatActivity {
             // Redirect to Forgot Password Activity
          //   startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
         });
+
+
+         wifiStateReceiver = new WifiStateReceiver();
+
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(wifiStateReceiver, filter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(wifiStateReceiver);
     }
 
     private void loginUser() {
@@ -75,4 +100,9 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+
+
 }
